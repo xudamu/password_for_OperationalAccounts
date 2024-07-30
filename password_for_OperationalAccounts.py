@@ -32,14 +32,20 @@ if input_mode == "1":
     if teshu=="y" or teshu=="yes":
         for i in dir_teshu:
             for j in tim():
-                print(chanpin+i+str(j))
+                password = chanpin+i+str(j)
+                print(password)
+                # with open('passwd.txt', 'a') as f:
+                    # f.write(password + '\n')
     if teshu=="n" or teshu=="no":
         new_testu=input("请输入您指定的一个或多个特殊符号,以空格或逗号分割")
         new_teshu=re.split("[, ]",new_testu)
         print(new_teshu)
         for i in new_teshu:
             for j in tim():
-                print(chanpin+teshu+i+str(j))
+                password = chanpin+teshu+i+str(j)
+                print(password)
+                # with open('passwd.txt', 'a') as f:
+                    # f.write(password + '\n')
 
 if input_mode == "2":
     def process_input(input_str):
@@ -88,5 +94,10 @@ if input_mode == "2":
             inputs.append(input(f"请输入第{i+1}个数字位：").split(','))
 
     # 打印所有的排列组合
+    with open('passwd.txt', 'w') as f:
+        print("文件在当前目录下的passwd中")
     for combination in product(*inputs):
-        print(''.join(combination))
+        password = ''.join(combination)
+        print(password)
+        with open('passwd.txt', 'a') as f:
+            f.write(password + '\n')
